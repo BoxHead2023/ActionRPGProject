@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Font/Minecraft.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/ButtonStyles/hover_styleboxtexture.tres" type="StyleBox" id=2]
+[ext_resource path="res://UI/ButtonStyles/press_styleboxtexture.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/ButtonStyles/normal_styleboxtexture.tres" type="StyleBox" id=4]
+[ext_resource path="res://UI/PlayerDieUI.gd" type="Script" id=5]
+[ext_resource path="res://Music and Sounds/Menu Select.wav" type="AudioStream" id=6]
+[ext_resource path="res://UI/LoseText.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=9]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=11]
+default_font = SubResource( 9 )
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="DynamicFont" id=10]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=13]
+default_font = SubResource( 10 )
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[node name="PlayerDieUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.568627 )
+
+[node name="ButtonRestart" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = 22.0
+margin_right = -8.0
+margin_bottom = 38.0
+theme = SubResource( 11 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/normal = ExtResource( 4 )
+text = "Restart"
+
+[node name="ButtonQuit" type="Button" parent="."]
+margin_left = 168.0
+margin_top = 112.0
+margin_right = 216.0
+margin_bottom = 128.0
+theme = SubResource( 13 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/normal = ExtResource( 4 )
+text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0
+margin_top = -25.0
+margin_right = 37.0
+margin_bottom = -1.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="ButtonAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 6 )
+
+[connection signal="pressed" from="ButtonRestart" to="." method="_on_ButtonRestart_pressed"]
+[connection signal="pressed" from="ButtonQuit" to="." method="_on_ButtonQuit_pressed"]

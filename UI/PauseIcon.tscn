@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/PauseIcon.png" type="Texture" id=1]
+
+[node name="PauseIcon" type="Sprite"]
+visible = false
+position = Vector2( 296, 24 )
+texture = ExtResource( 1 )
